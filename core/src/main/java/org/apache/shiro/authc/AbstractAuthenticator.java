@@ -112,6 +112,7 @@ public abstract class AbstractAuthenticator implements Authenticator, LogoutAwar
      * {@code info}.  This implementation merely iterates over the internal {@code listeners} collection and
      * calls {@link AuthenticationListener#onSuccess(AuthenticationToken, AuthenticationInfo) onSuccess}
      * for each.
+     * 监听器
      *
      * @param token the submitted {@code AuthenticationToken} that resulted in a successful authentication.
      * @param info  the returned {@code AuthenticationInfo} resulting from the successful authentication.

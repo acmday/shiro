@@ -261,6 +261,7 @@ public class ModularRealmAuthenticator extends AbstractAuthenticator {
      *                                 for the given principal and credentials.
      */
     protected AuthenticationInfo doAuthenticate(AuthenticationToken authenticationToken) throws AuthenticationException {
+        //认证之前要先判断Realm是否已经存在.
         assertRealmsConfigured();
         Collection<Realm> realms = getRealms();
         if (realms.size() == 1) {

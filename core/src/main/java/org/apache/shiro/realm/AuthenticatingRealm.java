@@ -578,6 +578,7 @@ public abstract class AuthenticatingRealm extends CachingRealm implements Initia
         }
 
         if (info != null) {
+            //验证该token的credential
             assertCredentialsMatch(token, info);
         } else {
             log.debug("No AuthenticationInfo found for submitted AuthenticationToken [{}].  Returning null.", token);

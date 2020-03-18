@@ -53,7 +53,9 @@ public abstract class SecurityUtils {
     public static Subject getSubject() {
         Subject subject = ThreadContext.getSubject();
         if (subject == null) {
+            //委托给securityManager去创建Subject.
             subject = (new Subject.Builder()).buildSubject();
+            //放到ThreadLocal中.
             ThreadContext.bind(subject);
         }
         return subject;

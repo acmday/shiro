@@ -285,6 +285,7 @@ public class DefaultSecurityManager extends SessionsSecurityManager {
             throw ae; //propagate
         }
 
+        //创建subject
         Subject loggedIn = createSubject(token, info, subject);
 
         onSuccessfulLogin(token, info, loggedIn);
@@ -346,12 +347,16 @@ public class DefaultSecurityManager extends SessionsSecurityManager {
         //if possible before handing off to the SubjectFactory:
         context = resolvePrincipals(context);
 
+        //创建Subject就是通过DelegatingSubject(PrincipalCollection principals, boolean authenticated, String host,
+        //                             Session session, boolean sessionCreationEnabled, SecurityManager securityManager)
+        //将这些信息组装到DelegatingSubject对象中.
         Subject subject = doCreateSubject(context);
 
         //save this subject for future reference if necessary:
         //(this is needed here in case rememberMe principals were resolved and they need to be stored in the
         //session, so we don't constantly rehydrate the rememberMe PrincipalCollection on every operation).
         //Added in 1.2:
+        //通过SubjectDAO保存，其实就是给Session设置了一堆属性，这些属性的作用还有待进一步探究.
         save(subject);
 
         return subject;

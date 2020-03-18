@@ -39,6 +39,7 @@ public interface Session {
     /**
      * Returns the unique identifier assigned by the system upon session creation.
      * <p/>
+     * 如果没有提供UUID或者数字，注意需要实现这三个方法.
      * All return values from this method are expected to have proper {@code toString()},
      * {@code equals()}, and {@code hashCode()} implementations. Good candidates for such
      * an identifier are {@link java.util.UUID UUID}s, {@link java.lang.Integer Integer}s, and

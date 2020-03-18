@@ -54,6 +54,8 @@ import org.apache.shiro.authc.AuthenticationToken;
  * {@link org.apache.shiro.realm.AuthenticatingRealm AuthenticatingRealm} or {@link org.apache.shiro.realm.AuthorizingRealm}, greatly reducing the effort requird
  * to implement a <tt>Realm</tt> from scratch.</p>
  *
+ *  Realm的接口几乎都是和token有关的。
+ *
  * @see org.apache.shiro.realm.CachingRealm CachingRealm
  * @see org.apache.shiro.realm.AuthenticatingRealm AuthenticatingRealm
  * @see org.apache.shiro.realm.AuthorizingRealm AuthorizingRealm
@@ -63,7 +65,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 public interface Realm {
 
     /**
-     * Returns the (application-unique) name assigned to this <code>Realm</code>. All realms configured for a single
+     * Returns the (application-unique) name assigned to(分配给) this <code>Realm</code>. All realms configured for a single
      * application must have a unique name.
      *
      * @return the (application-unique) name assigned to this <code>Realm</code>.
@@ -73,6 +75,7 @@ public interface Realm {
     /**
      * Returns <tt>true</tt> if this realm wishes to authenticate the Subject represented by the given
      * {@link org.apache.shiro.authc.AuthenticationToken AuthenticationToken} instance, <tt>false</tt> otherwise.
+     * 认证是相对于token而言的。
      *
      * <p>If this method returns <tt>false</tt>, it will not be called to authenticate the Subject represented by
      * the token - more specifically, a <tt>false</tt> return value means this Realm instance's
